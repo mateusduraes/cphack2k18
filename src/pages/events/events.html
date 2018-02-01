@@ -7,11 +7,13 @@
 
 
 <ion-content class="card-background-page">
-
-  <ion-card>
-    <div class="card-title">São Paulo</div>
-    <div class="card-subtitle">41 Listings</div>
-  </ion-card>
+  
+  <ng-container *ngIf="events">
+    <div *ngFor="let event of events?.results" ion-background [bgColor]="event?.color">
+      <div class="card-title">{{ event.title }}</div>
+      <div class="card-subtitle">{{ event.date | date }}</div>
+    </div>
+  </ng-container>
 
 </ion-content>
 

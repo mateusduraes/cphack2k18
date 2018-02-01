@@ -1,0 +1,6 @@
+@each $color-name, $color-base, $color-contrast in get-colors($colors) {
+    .bg-#{$color-name} {
+        background: $color-base;
+        color: $color-contrast;
+    }
+}

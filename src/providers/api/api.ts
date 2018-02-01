@@ -14,10 +14,12 @@ export class ApiProvider {
   getEventList(): Promise<any> {
     return this.ofService.dispatch({
       action: ActionTypes.GET,
-      type: '',
+      type: 'eventlist',
       keyId: 'id',
-      isList: true,
-      pathServer: environment.url + '/event/list',
+      isList: false,
+      pathServer: environment.url + 'event/list/',
+    }).then((result) => {
+      return result.id_undefined;
     });
   }
 

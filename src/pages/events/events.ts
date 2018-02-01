@@ -16,6 +16,8 @@ import { ApiProvider } from '../../providers/api/api';
 })
 export class EventsPage {
 
+  public events: any;
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -25,6 +27,10 @@ export class EventsPage {
   getEvents() {
     this.api.getEventList().then((events) => {
       console.log(events);
+      this.events = events;
+      for (const event of events.results) {
+      event.color = 'e' + String(Math.floor(Math.random() * 10));
+      }
     });
   }
 

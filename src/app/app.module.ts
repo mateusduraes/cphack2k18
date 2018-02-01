@@ -1,3 +1,4 @@
+import { DirectivesModule } from './../directives/directives.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { NgModule, ErrorHandler } from '@angular/core';
@@ -56,6 +57,7 @@ import { ApiProvider } from '../providers/api/api';
     HttpModule,
     ServerServiceModule.forRoot(),
     AuthServiceModule.forRoot('authkeycp'),
+    DirectivesModule,
     IonicModule.forRoot(ConferenceApp, {}, {
       links: [
         { component: TabsPage, name: 'TabsPage', segment: 'tabs-page' },
