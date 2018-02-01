@@ -23,4 +23,16 @@ export class ApiProvider {
     });
   }
 
+  getEvent(eventSlug: string): Promise<any> {
+    return this.ofService.dispatch({
+      action: ActionTypes.GET,
+      type: 'eventlist',
+      keyId: 'id',
+      isList: false,
+      pathServer: `${environment.url}agenda/list/${eventSlug}/`,
+    }).then((result) => {
+      return result.id_undefined;
+    });
+  }
+
 }

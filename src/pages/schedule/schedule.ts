@@ -1,6 +1,7 @@
+import { ApiProvider } from './../../providers/api/api';
 import { Component, ViewChild } from '@angular/core';
 
-import { AlertController, App, FabContainer, ItemSliding, List, ModalController, NavController, ToastController, LoadingController, Refresher } from 'ionic-angular';
+import { AlertController, App, FabContainer, ItemSliding, List, ModalController, NavController, ToastController, LoadingController, Refresher, NavParams } from 'ionic-angular';
 
 /*
   To learn how to use third party libs in an
@@ -37,17 +38,28 @@ export class SchedulePage {
   constructor(
     public alertCtrl: AlertController,
     public app: App,
+    public navParams: NavParams,
     public loadingCtrl: LoadingController,
     public modalCtrl: ModalController,
     public navCtrl: NavController,
     public toastCtrl: ToastController,
     public confData: ConferenceData,
     public user: UserData,
+    public api: ApiProvider,
   ) {}
 
   ionViewDidLoad() {
     this.app.setTitle('Schedule');
     this.updateSchedule();
+    this.getEvent();
+  }
+
+  private getEvent() {
+    const eventSlug = this.navParams.get('eventSlug');
+    console.log(eventSlug, this.navParams);
+    this.api.getEvent(eventSlug).then((event) => {
+      console.log(event);
+    });
   }
 
   updateSchedule() {

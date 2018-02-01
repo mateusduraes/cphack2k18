@@ -11,6 +11,13 @@
   }
 }
 
+@each $color-name, $color-base, $color-contrast in get-colors($colors) {
+    .bg-#{$color-name} {
+        background: $color-base;
+        color: $color-contrast;
+    }
+}
+
 
 // Name of the next breakpoint, or null for the last breakpoint.
 //

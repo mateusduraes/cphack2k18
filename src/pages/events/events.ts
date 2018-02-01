@@ -1,3 +1,4 @@
+import { TabsPage } from './../tabs-page/tabs-page';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
@@ -17,6 +18,7 @@ import { ApiProvider } from '../../providers/api/api';
 export class EventsPage {
 
   public events: any;
+  public tabsPage = TabsPage;
 
   constructor(
     public navCtrl: NavController,

@@ -15,8 +15,10 @@ export class TabsPage {
   tab2Root: any = SpeakerListPage;
   tab4Root: any = AboutPage;
   mySelectedIndex: number;
+  eventSlug: string;
 
   constructor(navParams: NavParams) {
+    this.eventSlug = navParams.get('eventSlug');
     this.mySelectedIndex = navParams.data.tabIndex || 0;
   }
 

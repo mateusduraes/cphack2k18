@@ -60,8 +60,8 @@ import { ApiProvider } from '../providers/api/api';
     DirectivesModule,
     IonicModule.forRoot(ConferenceApp, {}, {
       links: [
-        { component: TabsPage, name: 'TabsPage', segment: 'tabs-page' },
         { component: EventsPage, name: 'EventsPage', segment: 'events' },
+        { component: TabsPage, name: 'TabsPage', segment: 'event/:eventSlug' },
         { component: SchedulePage, name: 'Schedule', segment: 'schedule' },
         { component: SessionDetailPage, name: 'SessionDetail', segment: 'sessionDetail/:sessionId' },
         { component: ScheduleFilterPage, name: 'ScheduleFilter', segment: 'scheduleFilter' },
@@ -70,7 +70,7 @@ import { ApiProvider } from '../providers/api/api';
         { component: AboutPage, name: 'About', segment: 'about' },
         { component: LoginPage, name: 'LoginPage', segment: 'login' },
         { component: AccountPage, name: 'AccountPage', segment: 'account' },
-        { component: SignupPage, name: 'SignupPage', segment: 'signup' }
+        { component: SignupPage, name: 'SignupPage', segment: 'signup' },
       ]
     }),
     IonicStorageModule.forRoot()
