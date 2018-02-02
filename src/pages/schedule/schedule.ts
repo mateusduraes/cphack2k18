@@ -3,11 +3,6 @@ import { Component, ViewChild } from '@angular/core';
 
 import { AlertController, App, FabContainer, ItemSliding, List, ModalController, NavController, ToastController, LoadingController, Refresher, NavParams } from 'ionic-angular';
 
-/*
-  To learn how to use third party libs in an
-  Ionic app check out our docs here: http://ionicframework.com/docs/v2/resources/third-party-libs/
-*/
-// import moment from 'moment';
 
 import { ConferenceData } from '../../providers/conference-data';
 import { UserData } from '../../providers/user-data';
@@ -21,10 +16,6 @@ import { ScheduleFilterPage } from '../schedule-filter/schedule-filter';
   templateUrl: 'schedule.html'
 })
 export class SchedulePage {
-  // the list is a child of the schedule page
-  // @ViewChild('scheduleList') gets a reference to the list
-  // with the variable #scheduleList, `read: List` tells it to return
-  // the List and not a reference to the element
   @ViewChild('scheduleList', { read: List }) scheduleList: List;
 
   dayIndex = 0;
@@ -36,6 +27,7 @@ export class SchedulePage {
   confDate: string;
 
   public loaded: boolean;
+  public showOnlyFavorites: boolean;
   public schedule: {
     time: string;
     session: any[]
@@ -143,7 +135,6 @@ export class SchedulePage {
       // now present the alert on top of all other content
       alert.present();
     }
-
   }
 
   removeFavorite(slidingItem: ItemSliding, sessionData: any, title: string) {
@@ -174,6 +165,20 @@ export class SchedulePage {
     });
     // now present the alert on top of all other content
     alert.present();
+  }
+
+  public setFavorite(scheduleItem): void {
+    scheduleItem.isFavorite = !scheduleItem.isFavorite;
+  }
+
+  public toggleToFavorites(): void {
+    this.showOnlyFavorites = !this.showOnlyFavorites;
+    console.log('this.showOnlyFavorites', this.showOnlyFavorites);
+  }
+
+  checkIfSessionHasFavorites(group): boolean {
+    const hasFavorite = group.session.find(session => session.isFavorite);
+    return !!hasFavorite;
   }
 
   openSocial(network: string, fab: FabContainer) {

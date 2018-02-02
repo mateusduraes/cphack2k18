@@ -4,7 +4,7 @@
       <ion-icon name="menu"></ion-icon>
     </button>
 
-    <ion-segment [(ngModel)]="segment" (ionChange)="updateSchedule()">
+    <ion-segment [(ngModel)]="segment" (ionChange)="toggleToFavorites()">
       <ion-segment-button value="all">
         All
       </ion-segment-button>
@@ -36,37 +36,32 @@
 
   <ion-list #scheduleList *ngIf="loaded && schedule.length">
 
-    <ion-item-group *ngFor="let group of schedule">
+    <ng-container *ngFor="let group of schedule">
+      <ion-item-group *ngIf="showOnlyFavorites ? checkIfSessionHasFavorites(group) : true">
 
-      <ion-item-divider sticky>
-        <ion-label>
-          {{ group.time | date:'HH:mm'}}
-        </ion-label>
-      </ion-item-divider>
+        <ion-item-divider sticky>
+          <ion-label>
+            {{ group.time | date:'HH:mm'}}
+          </ion-label>
+        </ion-item-divider>
 
-      <ion-item-sliding *ngFor="let session of group.session" #slidingItem>
+        <ng-container *ngFor="let session of group.session">
+          <ion-item  *ngIf="showOnlyFavorites ? session.isFavorite : true">
 
-        <button ion-item (click)="goToSessionDetail(session)">
-          <h3 text-wrap>{{ session.title }}</h3>
-          <p>
-            {{ session.start_date | date:'HH:mm' }} &mdash;
-            {{ session.end_date | date:'HH:mm' }}
-            {{ session.location  }}
-          </p>
-        </button>
+            <button ion-item (click)="goToSessionDetail(session)">
+              <h3 text-wrap>{{ session.title }}</h3>
+              <p>
+                {{ session.start_date | date:'HH:mm' }} &mdash;
+                {{ session.end_date | date:'HH:mm' }}
+                {{ session.location  }}
+              </p>
+            </button>
+            <ion-icon [name]="session.isFavorite ? 'star' : 'star-outline'" item-right [color]="session.isFavorite ? 'yellowCampus' : 'dark'" (click)="setFavorite(session)"></ion-icon>
+          </ion-item>
+        </ng-container>
 
-        <ion-item-options>
-          <button ion-button color="favorite" (click)="addFavorite(slidingItem, session)" *ngIf="segment === 'all'">
-            Favorite
-          </button>
-          <button ion-button color="danger" (click)="removeFavorite(slidingItem, session, 'Remove Favorite')" *ngIf="segment === 'favorites'">
-            Remove
-          </button>
-        </ion-item-options>
-
-      </ion-item-sliding>
-
-    </ion-item-group>
+      </ion-item-group>
+    </ng-container>
 
   </ion-list>
 
