@@ -49,4 +49,17 @@ export class ApiProvider {
     });
   }
 
+
+  getSpeakersList(): Promise<any> {
+    return this.ofService.dispatch({
+      action: ActionTypes.GET,
+      type: 'speakerslist',
+      keyId: 'id',
+      isList: false,
+      pathServer: `${environment.url}/speaker/list`,
+    }).then((result) => {
+      return result.id_undefined;
+    });
+  }
+
 }

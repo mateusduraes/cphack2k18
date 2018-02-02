@@ -1,3 +1,4 @@
+import { ApiProvider } from './../../providers/api/api';
 import { Component } from '@angular/core';
 
 import {
@@ -36,10 +37,14 @@ export class SpeakerListPage {
     public navCtrl: NavController,
     public confData: ConferenceData,
     public config: Config,
-    public inAppBrowser: InAppBrowser
+    public inAppBrowser: InAppBrowser,
+    public api: ApiProvider
   ) {}
 
   ionViewDidLoad() {
+    this.api.getSpeakersList()
+      .then(data => console.log('data', data))
+      .catch(console.error);
     this.confData.getSpeakers().subscribe((speakers: any[]) => {
       this.speakers = speakers;
     });
