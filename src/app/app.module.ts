@@ -1,3 +1,4 @@
+import { SocialPage } from './../pages/social/social';
 import { ComponentsModule } from './../components/components.module';
 import { DirectivesModule } from './../directives/directives.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -52,6 +53,7 @@ import { ApiProvider } from '../providers/api/api';
     SpeakerListPage,
     TabsPage,
     EventsPage,
+    SocialPage
   ],
   imports: [
     BrowserModule,
@@ -92,6 +94,7 @@ import { ApiProvider } from '../providers/api/api';
     SpeakerListPage,
     TabsPage,
     EventsPage,
+    SocialPage
   ],
   providers: [
     { provide: ErrorHandler, useClass: IonicErrorHandler },

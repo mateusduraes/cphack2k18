@@ -1,0 +1,68 @@
+page-social {
+  ion-content {
+    background-image: url('../assets/img/login.jpeg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: transparent;
+    &:before {
+      position: absolute;
+      content: '';
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  .scroll-content {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    justify-content: center;
+  }
+
+  .logo {
+    width: 70%;
+    height: auto;
+    margin: 0 auto;
+    padding: 50px 0;
+  }
+
+  .btn-custom {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    margin: 5px 0px;
+  }
+
+
+  .item-login {
+    border: 1px solid map-get($colors, primary);;
+    .label {
+      color: map-get($colors, primary);
+    }
+  }
+
+
+  .select-container {
+    position: relative;
+    width: 12px;
+    height: 18px;
+    .select-icon {
+      left: 5px;
+      top: 50%;
+      margin-top: -2px;
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-top: 5px solid;
+      border-right: 5px solid transparent;
+      border-left: 5px solid transparent;
+      color: #999;
+      pointer-events: none;
+    }
+  }
+
+
+}

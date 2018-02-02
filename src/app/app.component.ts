@@ -1,3 +1,4 @@
+import { SocialPage } from './../pages/social/social';
 import { Component, ViewChild } from '@angular/core';
 
 import { Events, MenuController, Nav, Platform } from 'ionic-angular';
@@ -145,5 +146,9 @@ export class ConferenceApp {
       return 'primary';
     }
     return;
+  }
+
+  openSocial() {
+    this.nav.push(SocialPage);
   }
 }
