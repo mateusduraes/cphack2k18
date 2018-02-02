@@ -32,6 +32,9 @@ export class SchedulePage {
     time: string;
     session: any[]
   } [] = [];
+  public filterDay: string;
+  public groupFilterDay: string[] = [];
+  public triggetDateChange: boolean;
 
   constructor(
     public alertCtrl: AlertController,
@@ -58,7 +61,9 @@ export class SchedulePage {
       .then(eventSchedule => {
         this.buildSchedule(eventSchedule);
       })
-      .then(() => this.loaded = true)
+      .then(() => {
+        this.loaded = true;
+      })
       .catch(console.error);
   }
 
@@ -77,8 +82,34 @@ export class SchedulePage {
         time: key,
         session: groupedObj[key]
       });
+
+      const date = new Date(key);
+      const day = this.mountDate(date);
+      console.log('day', day);
+      const finded = this.groupFilterDay.find(dayFound => dayFound === day);
+      if(!finded) {
+        this.groupFilterDay.push(day);
+      }
     });
-    console.log(this.schedule, 'schedule');
+    const date = this.mountDate(new Date());
+    this.filterDay = date;
+  }
+
+  checkDate(start_date: string): boolean {
+    console.log(this.filterDay === this.mountDate(new Date(start_date)));
+    return this.filterDay === this.mountDate(new Date(start_date));
+  }
+
+  public toggleDates(): void {
+    this.triggetDateChange = !this.triggetDateChange;
+  }
+
+  mountDate(date): string {
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const formatDay = day > 10 ? day : `0${day}`;
+    const formatMonth = month > 10 ? month : `0${month}`;
+    return `${formatDay}/${formatMonth}`;
   }
 
   updateSchedule() {
@@ -101,7 +132,6 @@ export class SchedulePage {
         this.updateSchedule();
       }
     });
-
   }
 
   goToSessionDetail(sessionData: any) {
@@ -203,11 +233,32 @@ export class SchedulePage {
         refresher.complete();
 
         const toast = this.toastCtrl.create({
-          message: 'Sessions have been updated.',
+          message: 'Schedule have been updated.',
           duration: 3000
         });
         toast.present();
       }, 1000);
     });
   }
+
+  canShowGroup(group): boolean {
+    const hasFavorites = this.checkIfSessionHasFavorites(group);
+    const checkDate = this.checkDate(group.time);
+    if (this.showOnlyFavorites) {
+      return hasFavorites && checkDate;
+    } else {
+      return checkDate;
+    }
+  }
+
+  canShowSession(session): boolean {
+    const isFavorite = session.isFavorite;
+    const checkDate = this.checkDate(session.start_date);
+    if (this.showOnlyFavorites) {
+      return isFavorite && checkDate;
+    } else {
+      return checkDate;
+    }
+  }
+
 }

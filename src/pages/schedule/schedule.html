@@ -34,10 +34,16 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
+  <ion-segment [(ngModel)]="filterDay" color="primary" *ngIf="loaded">
+    <ion-segment-button *ngFor="let date of groupFilterDay" [value]="date">
+      {{ date }}
+    </ion-segment-button>
+  </ion-segment>
+
   <ion-list #scheduleList *ngIf="loaded && schedule.length">
 
     <ng-container *ngFor="let group of schedule">
-      <ion-item-group *ngIf="showOnlyFavorites ? checkIfSessionHasFavorites(group) : true">
+      <ion-item-group *ngIf="canShowGroup(group)">
 
         <ion-item-divider sticky>
           <ion-label>
@@ -46,7 +52,7 @@
         </ion-item-divider>
 
         <ng-container *ngFor="let session of group.session">
-          <ion-item  *ngIf="showOnlyFavorites ? session.isFavorite : true">
+          <ion-item  *ngIf="canShowSession(session)">
 
             <button ion-item (click)="goToSessionDetail(session)">
               <h3 text-wrap>{{ session.title }}</h3>
@@ -68,6 +74,8 @@
   <ion-list-header *ngIf="loaded && !schedule.length">
       No Sessions Found
   </ion-list-header>
+
+  <loader *ngIf="!loaded" message="Searching activities..."></loader>
 
   <ion-fab bottom right #fab>
     <button ion-fab><ion-icon name="share"></ion-icon></button>

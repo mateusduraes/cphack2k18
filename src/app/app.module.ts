@@ -1,3 +1,4 @@
+import { ComponentsModule } from './../components/components.module';
 import { DirectivesModule } from './../directives/directives.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
@@ -58,6 +59,7 @@ import { ApiProvider } from '../providers/api/api';
     ServerServiceModule.forRoot(),
     AuthServiceModule.forRoot('authkeycp'),
     DirectivesModule,
+    ComponentsModule,
     IonicModule.forRoot(ConferenceApp, {}, {
       links: [
         { component: EventsPage, name: 'EventsPage', segment: 'events' },
