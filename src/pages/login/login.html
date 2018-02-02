@@ -20,7 +20,7 @@
       <ion-label>Password</ion-label>
       <ion-input type="password"></ion-input>
     </ion-item>
-    <button ion-button block class="btn-login">Login</button>
-    <button ion-button block class="btn-login" color="light">Signup</button>
+    <button ion-button block class="btn-login" (click)="onLogin()">Login</button>
+    <button ion-button block class="btn-login" (click)="onSignup()" color="light">Signup</button>
   </form>
 </ion-content>
