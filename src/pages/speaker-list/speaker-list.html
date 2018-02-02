@@ -8,59 +8,129 @@
 </ion-header>
 
 <ion-content class="outer-content speaker-list">
-  <ion-list [virtualScroll]="speakers">
-    <ion-grid fixed>
-      <ion-row align-items-stretch>
+    <ion-list>
 
-        <ion-col col-12 col-md-6 align-self-stretch align-self-center *virtualItem="let speaker" approxItemHeight="457px">
+        <ion-list-header>Today</ion-list-header>
 
-          <ion-card class="speaker-card">
-            <ion-card-header>
-              <button ion-item detail-none (click)="goToSpeakerDetail(speaker)">
-                <ion-avatar item-start>
-                  <img [src]="speaker.profilePic" alt="Speaker profile pic">
-                </ion-avatar>
-                {{speaker.name}}
-              </button>
-            </ion-card-header>
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="assets/img/avatar-ts-woody.png">
+          </ion-avatar>
+          <h2>Woody</h2>
+          <p>This town ain't big enough for the two of us!</p>
+          <ion-note item-end>3:43 pm</ion-note>
+        </ion-item>
 
-            <ion-card-content class="outer-content">
-              <ion-list>
-                <button ion-item *ngFor="let session of speaker.sessions" (click)="goToSessionDetail(session)">
-                  <h3>{{session.name}}</h3>
-                </button>
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="assets/img/avatar-ts-buzz.png">
+          </ion-avatar>
+          <h2>Buzz Lightyear</h2>
+          <p>My eyeballs could have been sucked from their sockets!</p>
+          <ion-note item-end>1:12 pm</ion-note>
+        </ion-item>
 
-                <button ion-item (click)="goToSpeakerDetail(speaker)">
-                  <h3>About {{speaker.name}}</h3>
-                </button>
-              </ion-list>
-            </ion-card-content>
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="assets/img/avatar-ts-jessie.png">
+          </ion-avatar>
+          <h2>Jessie</h2>
+          <p>Well aren't you just the sweetest space toy I ever did meet!</p>
+          <ion-note item-end>10:03 am</ion-note>
+        </ion-item>
 
-            <ion-row no-padding>
-              <ion-col col-12 col-lg-auto text-center text-lg-left>
-                <button ion-button clear small color="primary" icon-start (click)="goToSpeakerTwitter(speaker)">
-                  <ion-icon name="logo-twitter"></ion-icon>
-                  Tweet
-                </button>
-              </ion-col>
-              <ion-col col-12 col-lg-auto text-center>
-                <button ion-button clear small color="primary" icon-start (click)="openSpeakerShare(speaker)">
-                  <ion-icon name='share-alt'></ion-icon>
-                  Share
-                </button>
-              </ion-col>
-              <ion-col col-12 col-lg-auto text-center text-lg-right>
-                <button ion-button clear small color="primary" icon-start (click)="openContact(speaker)">
-                  <ion-icon name='chatboxes'></ion-icon>
-                  Contact
-                </button>
-              </ion-col>
-            </ion-row>
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="assets/img/avatar-ts-potatohead.png">
+          </ion-avatar>
+          <h2>Mr. Potato Head</h2>
+          <p>You're not turning me into a Mashed Potato.</p>
+          <ion-note item-end>5:47 am</ion-note>
+        </ion-item>
 
-          </ion-card>
+      </ion-list>
 
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-list>
+      <ion-list>
+
+        <ion-list-header>Yesterday</ion-list-header>
+
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="assets/img/avatar-ts-hamm.png">
+          </ion-avatar>
+          <h2>Hamm</h2>
+          <p>You heard of Kung Fu? Well get ready for pork chop.</p>
+          <ion-note item-end>11:11 pm</ion-note>
+        </ion-item>
+
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="assets/img/avatar-ts-slinky.png">
+          </ion-avatar>
+          <h2>Slinky Dog</h2>
+          <p>I may not be a smart dog, but I know what roadkill is.</p>
+          <ion-note item-end>8:54 pm</ion-note>
+        </ion-item>
+
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="assets/img/avatar-ts-rex.png">
+          </ion-avatar>
+          <h2>Rex</h2>
+          <p>Were you scared? Tell me honestly.</p>
+          <ion-note item-end>7:22 am</ion-note>
+        </ion-item>
+
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="assets/img/avatar-ts-bullseye.png">
+          </ion-avatar>
+          <h2>Bullseye</h2>
+          <p>Neigh!</p>
+          <ion-note item-end>2:08 am</ion-note>
+        </ion-item>
+
+      </ion-list>
+
+      <ion-list>
+
+        <ion-list-header>Last Week</ion-list-header>
+
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="assets/img/avatar-ts-barbie.png">
+          </ion-avatar>
+          <h2>Barbie</h2>
+          <p>So, who's ready for Ken's dream tour?</p>
+          <ion-note item-end>Sun</ion-note>
+        </ion-item>
+
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="assets/img/avatar-ts-squeeze.png">
+          </ion-avatar>
+          <h2>Squeeze</h2>
+          <p>The claw is our master.</p>
+          <ion-note item-end>Fri</ion-note>
+        </ion-item>
+
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="assets/img/avatar-ts-sarge.png">
+          </ion-avatar>
+          <h2>Sarge</h2>
+          <p>Code Red, repeat: We're at Code Red!</p>
+          <ion-note item-end>Wed</ion-note>
+        </ion-item>
+
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="assets/img/avatar-ts-bopeep.png">
+          </ion-avatar>
+          <h2>Bo Peep</h2>
+          <p>What would you say if I get someone else to watch the sheep for me tonight?</p>
+          <ion-note item-end>Mon</ion-note>
+        </ion-item>
+
+      </ion-list>
 </ion-content>
