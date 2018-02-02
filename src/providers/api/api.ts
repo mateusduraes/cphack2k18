@@ -17,7 +17,7 @@ export class ApiProvider {
       type: 'eventlist',
       keyId: 'id',
       isList: false,
-      pathServer: environment.url + 'event/list/',
+      pathServer: environment.url + '/event/list/',
     }).then((result) => {
       return result.id_undefined;
     });

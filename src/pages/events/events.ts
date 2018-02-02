@@ -31,7 +31,8 @@ export class EventsPage {
       console.log(events);
       this.events = events;
       for (const event of events.results) {
-      event.color = 'e' + String(Math.floor(Math.random() * 10));
+        event.color = 'e' + String(Math.floor(Math.random() * 10));
+        console.log('slug', event.slug);
       }
     });
   }
