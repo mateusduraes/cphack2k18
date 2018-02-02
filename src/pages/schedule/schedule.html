@@ -34,24 +34,24 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
-  <ion-list #scheduleList [hidden]="shownSessions === 0">
+  <ion-list #scheduleList *ngIf="loaded && schedule.length">
 
-    <ion-item-group *ngFor="let group of groups" [hidden]="group.hide">
+    <ion-item-group *ngFor="let group of schedule">
 
       <ion-item-divider sticky>
         <ion-label>
-          {{group.time}}
+          {{ group.time | date:'HH:mm'}}
         </ion-label>
       </ion-item-divider>
 
-      <ion-item-sliding *ngFor="let session of group.sessions" #slidingItem [attr.track]="session.tracks[0] | lowercase" [hidden]="session.hide">
+      <ion-item-sliding *ngFor="let session of group.session" #slidingItem>
 
         <button ion-item (click)="goToSessionDetail(session)">
-          <h3>{{session.name}}</h3>
+          <h3>{{ session.title }}</h3>
           <p>
-            {{session.timeStart}} &mdash;
-            {{session.timeEnd}}:
-            {{session.location}}
+            {{ session.start_date | date:'HH:mm' }} &mdash;
+            {{ session.end_date | date:'HH:mm' }}
+            {{ session.location  }}
           </p>
         </button>
 
@@ -70,7 +70,7 @@
 
   </ion-list>
 
-  <ion-list-header [hidden]="shownSessions > 0">
+  <ion-list-header *ngIf="loaded && !schedule.length">
       No Sessions Found
   </ion-list-header>
 

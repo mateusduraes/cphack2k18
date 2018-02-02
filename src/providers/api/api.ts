@@ -1,3 +1,4 @@
+import { Storage } from '@ionic/storage';
 import { Injectable } from '@angular/core';
 import { OfServiceProvider } from '../of-service/of-service';
 
@@ -8,7 +9,20 @@ import { environment } from '@app/env';
 @Injectable()
 export class ApiProvider {
 
-  constructor(public ofService: OfServiceProvider) {
+  constructor(public ofService: OfServiceProvider,
+    public storage: Storage) {
+  }
+
+  public setCurrentEventSlug(eventSlug: string): Promise<any> {
+    return this.storage.set('current_slug', eventSlug);
+  }
+
+  public getCurrentEventSlug(): Promise<string> {
+    return this.storage.get('current_slug');
+  }
+
+  public removeCurrentEventSlug(): Promise<any> {
+    return this.storage.remove('current_slug');
   }
 
   getEventList(): Promise<any> {
@@ -29,7 +43,7 @@ export class ApiProvider {
       type: 'eventlist',
       keyId: 'id',
       isList: false,
-      pathServer: `${environment.url}agenda/list/${eventSlug}/`,
+      pathServer: `${environment.url}/agenda/list/${eventSlug}/`,
     }).then((result) => {
       return result.id_undefined;
     });

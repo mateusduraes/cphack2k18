@@ -37,6 +37,13 @@ export class EventsPage {
     });
   }
 
+  selectEvent (event) {
+    this.api.setCurrentEventSlug(event.slug)
+      .then(() => {
+        this.navCtrl.setRoot('TabsPage');
+      });
+  }
+
   ionViewDidLoad() {
     this.getEvents();
   }

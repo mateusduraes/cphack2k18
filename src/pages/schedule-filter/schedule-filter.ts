@@ -10,7 +10,22 @@ import { ConferenceData } from '../../providers/conference-data';
   templateUrl: 'schedule-filter.html'
 })
 export class ScheduleFilterPage {
-  tracks: Array<{name: string, isChecked: boolean}> = [];
+  tracks: Array<{name: string, isChecked: boolean}> = [
+    {name: 'Creativity', isChecked: false},
+    {name: 'Desenvolvimento', isChecked: false},
+    {name: 'Marketing/Redes Sociais', isChecked: false},
+    {name: 'Technology', isChecked: false},
+    {name: 'Astronomia/Aeroespacial', isChecked: false},
+    {name: 'Empreendedorismo', isChecked: false},
+    {name: 'Maker/Hw', isChecked: false},
+    {name: 'Design/Multimídia', isChecked: false},
+    {name: 'Science', isChecked: false},
+    {name: 'Software Livre', isChecked: false},
+    {name: 'Segurança/Redes', isChecked: false},
+    {name: 'Robotica', isChecked: false},
+    {name: 'Game', isChecked: false},
+    {name: 'IoT', isChecked: false},
+  ];
 
   constructor(
     public confData: ConferenceData,
@@ -18,18 +33,18 @@ export class ScheduleFilterPage {
     public viewCtrl: ViewController
   ) {
     // passed in array of track names that should be excluded (unchecked)
-    let excludedTrackNames = this.navParams.data;
+    // let excludedTrackNames = this.navParams.data;
 
-    this.confData.getTracks().subscribe((trackNames: string[]) => {
+    // this.confData.getTracks().subscribe((trackNames: string[]) => {
 
-      trackNames.forEach(trackName => {
-        this.tracks.push({
-          name: trackName,
-          isChecked: (excludedTrackNames.indexOf(trackName) === -1)
-        });
-      });
+    //   trackNames.forEach(trackName => {
+    //     this.tracks.push({
+    //       name: trackName,
+    //       isChecked: (excludedTrackNames.indexOf(trackName) === -1)
+    //     });
+    //   });
 
-    });
+    // });
   }
 
   resetFilters() {

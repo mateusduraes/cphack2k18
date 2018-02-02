@@ -35,6 +35,12 @@ export class SchedulePage {
   groups: any = [];
   confDate: string;
 
+  public loaded: boolean;
+  public schedule: {
+    time: string;
+    session: any[]
+  } [] = [];
+
   constructor(
     public alertCtrl: AlertController,
     public app: App,
@@ -50,16 +56,37 @@ export class SchedulePage {
 
   ionViewDidLoad() {
     this.app.setTitle('Schedule');
-    this.updateSchedule();
+    // this.updateSchedule();
     this.getEvent();
   }
 
   private getEvent() {
-    const eventSlug = this.navParams.get('eventSlug');
-    console.log(eventSlug, this.navParams);
-    this.api.getEvent(eventSlug).then((event) => {
-      console.log(event);
+    this.api.getCurrentEventSlug()
+      .then((eventSlug: string) => this.api.getEvent(eventSlug))
+      .then(eventSchedule => {
+        this.buildSchedule(eventSchedule);
+      })
+      .then(() => this.loaded = true)
+      .catch(console.error);
+  }
+
+  private buildSchedule(eventSchedule: any) {
+    const groupedObj = {};
+    eventSchedule.results.forEach(item => {
+      const time = item.start_date;
+      if (groupedObj[time]) {
+        groupedObj[time].push(item);
+      } else {
+        groupedObj[time] = [item];
+      }
     });
+    Object.keys(groupedObj).forEach((key: string) => {
+      this.schedule.push({
+        time: key,
+        session: groupedObj[key]
+      });
+    });
+    console.log(this.schedule, 'schedule');
   }
 
   updateSchedule() {

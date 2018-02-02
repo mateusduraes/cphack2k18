@@ -12,16 +12,19 @@
 <ion-content class="card-background-page">
   <img src="assets/img/campus1.jpeg" alt="">
   <ng-container *ngIf="events">
-    <ion-card tappable *ngFor="let event of events?.results" [navPush]="tabsPage" [navParams]="{ eventSlug: event.slug }" tappable class="{{ event.slug }}">
+
+    <ion-card tappable *ngFor="let event of events?.results" (click)="selectEvent(event)" tappable class="{{ event.slug }}">
       <img [src]="'assets/img/' + event.slug + '.jpg'" alt="">
       <div class="card-title">
-        <img src="assets/img/campus-logo.png" alt="">
+        <img src="assets/img/campus-logo.png" onError="'this.src = 'assets/img/campus-party-italia-2018.jpg'" alt="">
       </div>
       <div class="card-subtitle">
         <p>{{ event.title }}</p>
         <p>{{ event.start_date | date }}</p>
       </div>
     </ion-card>
+
+
   </ng-container>
 </ion-content>
 
