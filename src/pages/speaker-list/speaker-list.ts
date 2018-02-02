@@ -1,3 +1,4 @@
+import { SpeakerDetailPage } from './../speaker-detail/speaker-detail';
 import { ApiProvider } from './../../providers/api/api';
 import { Component } from '@angular/core';
 
@@ -13,7 +14,6 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { ConferenceData } from '../../providers/conference-data';
 
 import { SessionDetailPage } from '../session-detail/session-detail';
-import { SpeakerDetailPage } from '../speaker-detail/speaker-detail';
 
 // TODO remove
 export interface ActionSheetButton {
@@ -43,11 +43,14 @@ export class SpeakerListPage {
 
   ionViewDidLoad() {
     this.api.getSpeakersList()
-      .then(data => console.log('data', data))
+      .then(data => {
+        this.speakers = data;
+        console.log('speakers', this.speakers);
+      })
       .catch(console.error);
-    this.confData.getSpeakers().subscribe((speakers: any[]) => {
-      this.speakers = speakers;
-    });
+    // this.confData.getSpeakers().subscribe((speakers: any[]) => {
+    //   this.speakers = speakers;
+    // });
   }
 
   goToSessionDetail(session: any) {
@@ -117,5 +120,9 @@ export class SpeakerListPage {
     } as ActionSheetOptions);
 
     actionSheet.present();
+  }
+
+  public goDetail(speaker: any) {
+    this.navCtrl.push(SpeakerDetailPage, {speaker: speaker});
   }
 }
