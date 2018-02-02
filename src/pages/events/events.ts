@@ -19,6 +19,7 @@ export class EventsPage {
 
   public events: any;
   public tabsPage = TabsPage;
+  public loaded: boolean;
 
   constructor(
     public navCtrl: NavController,
@@ -34,6 +35,7 @@ export class EventsPage {
         event.color = 'e' + String(Math.floor(Math.random() * 10));
         console.log('slug', event.slug);
       }
+      this.loaded = true;
     });
   }
 

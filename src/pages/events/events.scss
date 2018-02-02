@@ -12,7 +12,7 @@ page-events {
       background: rgba(0, 0, 0, 0.55);
       z-index: 1;
     }
-    
+
     &.campus-party-brasil-2018:before {
       background: rgba(map-get($colors, grenCampus), 0.55);
     }
@@ -26,9 +26,9 @@ page-events {
       background: rgba(map-get($colors, purpleCampus), 0.55);
     }
     &.campus-party-italia-2018:before {
-      background: rgba(map-get($colors, grenCampus), 0.55);
+      background: rgba(map-get($colors, peachCampus), 0.55);
     }
-    
+
     .card-title {
       position: absolute;
       top: 36%;
