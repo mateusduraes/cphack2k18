@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-navbar no-border-bottom>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Highlights in campus</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-item-divider color="pinkCampus" text-wrap>
+    See the highlights that will happen in the next 2 hours.
+  </ion-item-divider>
+
+  <ion-segment [(ngModel)]="selectedTab" color="primary">
+    <ion-segment-button value="speakers">
+      Speakers
+    </ion-segment-button>
+    <ion-segment-button value="activites">
+      Activities
+    </ion-segment-button>
+  </ion-segment>
+
+  <div [hidden]="selectedTab !== 'speakers'" padding>
+    <ion-item>
+      <ion-thumbnail item-start>
+        <img src="assets/img/speakers/default-speaker.png" alt="">
+      </ion-thumbnail>
+      <h2>João Alfredo</h2>
+      <p>Frontend Developer</p>
+      <div class="like-container" item-right>
+        <ion-icon name="thumbs-up" color="dark"></ion-icon>
+        <ion-badge color="primary">3.2k</ion-badge>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-thumbnail item-start>
+        <img src="assets/img/speakers/person1.jpg" alt="">
+      </ion-thumbnail>
+      <h2>Junior Gomes</h2>
+      <p>DBA</p>
+      <div class="like-container" item-right>
+        <ion-icon name="thumbs-up" color="dark"></ion-icon>
+        <ion-badge color="primary">2.6k</ion-badge>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-thumbnail item-start>
+        <img src="assets/img/speakers/person3.jpg" alt="">
+      </ion-thumbnail>
+      <h2>João Alfredo</h2>
+      <p>Java Specialist</p>
+      <div class="like-container" item-right>
+        <ion-icon name="thumbs-up" color="dark"></ion-icon>
+        <ion-badge color="primary">2.2k</ion-badge>
+      </div>
+    </ion-item>
+  </div>
+
+  <div [hidden]="selectedTab !== 'activites'" padding>
+    <ion-item>
+      <h2>Vídeo: Gravando com produtividade #CPBR11</h2>
+      <p text-wrap>10:30 AM - 11:30 AM - Main stage</p>
+      <div class="like-container" item-right>
+        <ion-icon name="thumbs-up" color="dark"></ion-icon>
+        <ion-badge color="primary">5.2k</ion-badge>
+      </div>
+    </ion-item>
+    <ion-item>
+      <h2>O desafio de ser multiplataforma</h2>
+      <p text-wrap>11:30 AM - 12:00 AM - Main stage</p>
+      <div class="like-container" item-right>
+        <ion-icon name="thumbs-up" color="dark"></ion-icon>
+        <ion-badge color="primary">4.0k</ion-badge>
+      </div>
+    </ion-item>
+    <ion-item>
+      <h2>Entrevista Felipe Castanhari #CPBR11</h2>
+      <p text-wrap>10:30 AM - 11:30 AM - Main stage</p>
+      <div class="like-container" item-right>
+        <ion-icon name="thumbs-up" color="dark"></ion-icon>
+        <ion-badge color="primary">3.5k</ion-badge>
+      </div>
+    </ion-item>
+  </div>
+</ion-content>

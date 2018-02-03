@@ -1,6 +1,3 @@
-import { InvitePage } from './../pages/invite/invite';
-import { FindPersonPage } from './../pages/find-person/find-person';
-import { SocialPage } from './../pages/social/social';
 import { ComponentsModule } from './../components/components.module';
 import { DirectivesModule } from './../directives/directives.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -20,6 +17,11 @@ import { IonicStorageModule } from '@ionic/storage';
 
 import { ConferenceApp } from './app.component';
 
+import { SocialPage } from './../pages/social/social';
+import { TicketPage } from '../pages/ticket/ticket';
+import { FindPersonPage } from './../pages/find-person/find-person';
+import { InvitePage } from './../pages/invite/invite';
+import { HilightsPage } from './../pages/hilights/hilights';
 import { HowArrivePage } from '../pages/how-arrive/how-arrive';
 import { AboutPage } from '../pages/about/about';
 import { PersonLocationPage } from '../pages/person-location/person-location';
@@ -63,7 +65,9 @@ import { ApiProvider } from '../providers/api/api';
     FindPersonPage,
     FindPersonDetailPage,
     PersonLocationPage,
-    HowArrivePage
+    HowArrivePage,
+    TicketPage,
+    HilightsPage
   ],
   imports: [
     BrowserModule,
@@ -83,10 +87,12 @@ import { ApiProvider } from '../providers/api/api';
         { component: SpeakerListPage, name: 'SpeakerList', segment: 'speakerList' },
         { component: SpeakerDetailPage, name: 'SpeakerDetail', segment: 'speakerDetail/:speakerId' },
         { component: AboutPage, name: 'About', segment: 'about' },
-        { component: HowArrivePage, name: 'HowArrive', segment: 'arrive' },
+        { component: HowArrivePage, name: 'HowArrivePage', segment: 'arrive' },
+        { component: TicketPage, name: 'TicketPage', segment: 'ticket' },
         { component: LoginPage, name: 'LoginPage', segment: 'login' },
         { component: AccountPage, name: 'AccountPage', segment: 'account' },
         { component: SignupPage, name: 'SignupPage', segment: 'signup' },
+        { component: HilightsPage, name: 'HilightsPage', segment: 'hilight' },
       ]
     }),
     IonicStorageModule.forRoot()
@@ -111,7 +117,9 @@ import { ApiProvider } from '../providers/api/api';
     FindPersonPage,
     FindPersonDetailPage,
     PersonLocationPage,
-    HowArrivePage
+    HowArrivePage,
+    TicketPage,
+    HilightsPage
   ],
   providers: [
     { provide: ErrorHandler, useClass: IonicErrorHandler },
