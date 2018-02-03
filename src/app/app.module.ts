@@ -20,6 +20,7 @@ import { IonicStorageModule } from '@ionic/storage';
 
 import { ConferenceApp } from './app.component';
 
+import { HowArrivePage } from '../pages/how-arrive/how-arrive';
 import { AboutPage } from '../pages/about/about';
 import { PersonLocationPage } from '../pages/person-location/person-location';
 import { PopoverPage } from '../pages/about-popover/about-popover';
@@ -61,7 +62,8 @@ import { ApiProvider } from '../providers/api/api';
     InvitePage,
     FindPersonPage,
     FindPersonDetailPage,
-    PersonLocationPage
+    PersonLocationPage,
+    HowArrivePage
   ],
   imports: [
     BrowserModule,
@@ -81,6 +83,7 @@ import { ApiProvider } from '../providers/api/api';
         { component: SpeakerListPage, name: 'SpeakerList', segment: 'speakerList' },
         { component: SpeakerDetailPage, name: 'SpeakerDetail', segment: 'speakerDetail/:speakerId' },
         { component: AboutPage, name: 'About', segment: 'about' },
+        { component: HowArrivePage, name: 'HowArrive', segment: 'arrive' },
         { component: LoginPage, name: 'LoginPage', segment: 'login' },
         { component: AccountPage, name: 'AccountPage', segment: 'account' },
         { component: SignupPage, name: 'SignupPage', segment: 'signup' },
@@ -107,7 +110,8 @@ import { ApiProvider } from '../providers/api/api';
     InvitePage,
     FindPersonPage,
     FindPersonDetailPage,
-    PersonLocationPage
+    PersonLocationPage,
+    HowArrivePage
   ],
   providers: [
     { provide: ErrorHandler, useClass: IonicErrorHandler },

@@ -1,3 +1,4 @@
+import { HowArrivePage } from './../pages/how-arrive/how-arrive';
 import { SocialPage } from './../pages/social/social';
 import { Component, ViewChild } from '@angular/core';
 
@@ -109,6 +110,8 @@ export class ConferenceApp {
     }
   }
 
+
+
   listenToLoginEvents() {
     this.events.subscribe('user:login', () => {
       this.enableMenu(true);
@@ -154,5 +157,9 @@ export class ConferenceApp {
 
   openSocial() {
     this.nav.push(SocialPage);
+  }
+
+  howArrive() {
+    this.nav.push(HowArrivePage);
   }
 }
