@@ -11,8 +11,8 @@ import { Headers, Http } from '@angular/http';
 @Injectable()
 export class AuthProvider {
 
-  static readonly CLIENT_ID: string = 'zJg7ciZGVjpnFVXtpsdJNeXDJjIemkVVoZdXULOx';
-  static readonly CLIENT_SECRET: string = 'c8KtcxJMRSqEdtU5wHWxJUMGc7T39uJ9uJIzaHnTYtU7jnDU6WTy7ETh7EQTBcndWegDRK8ksmzgupZm3FDy1POrUXoKabPgoh0J6BcxfHER6Wjgx2iHkwhnMhhJI5Vd';
+  static readonly CLIENT_ID: string = 'gyye6hC6IqKjUSqnJAvCp7hQz69tk2GOc8kRyXy2';
+  static readonly CLIENT_SECRET: string = '6ssT7ComxCfqhOEXoTmZ0Anpx7MSL50LgPGXHKYaHCgWy4KXMOAdkwMZIguCmYq39I5MHm4HOMv3eql1GjOYlnrIrDBubcZoZOVB3VYNeGQeLp6jsDJfBw0bCRc6LqLA';
 
   constructor(
     public serverService: ServerService,

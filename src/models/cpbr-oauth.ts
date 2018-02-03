@@ -12,7 +12,7 @@ export class CPOauth extends OAuthProvider {
     options: ICPOptions;
     protected authUrl: string = 'https://sandboxaccounts.campuse.ro/o/authorize';
     protected defaults: Object = {
-        clientId: 'zJg7ciZGVjpnFVXtpsdJNeXDJjIemkVVoZdXULOx',
+        clientId: 'gyye6hC6IqKjUSqnJAvCp7hQz69tk2GOc8kRyXy2',
         responseType: 'code',
     };
 

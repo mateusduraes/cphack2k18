@@ -35,7 +35,7 @@ export class SchedulePage {
   public filterDay: string;
   public groupFilterDay: string[] = [];
   public triggetDateChange: boolean;
-
+  public areas: any = {};
   constructor(
     public alertCtrl: AlertController,
     public app: App,
@@ -51,7 +51,6 @@ export class SchedulePage {
 
   ionViewDidLoad() {
     this.app.setTitle('Schedule');
-    // this.updateSchedule();
     this.getEvent();
   }
 
@@ -66,17 +65,39 @@ export class SchedulePage {
       })
       .catch(console.error);
   }
+  
+  private getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
 
   private buildSchedule(eventSchedule: any) {
     const groupedObj = {};
+    const areas = {};
     eventSchedule.results.forEach(item => {
       const time = item.start_date;
+      if (item && item.interest_areas) {
+        for (let area of item.interest_areas) {
+          if (!areas[area.name]) {
+            areas[area.name] = {
+              name: area.name,
+              color: this.getRandomColor(),
+            }
+          }
+        }
+      }
       if (groupedObj[time]) {
         groupedObj[time].push(item);
       } else {
         groupedObj[time] = [item];
       }
     });
+    this.areas = areas;
+    
     Object.keys(groupedObj).forEach((key: string) => {
       this.schedule.push({
         time: key,
@@ -96,7 +117,6 @@ export class SchedulePage {
   }
 
   checkDate(start_date: string): boolean {
-    console.log(this.filterDay === this.mountDate(new Date(start_date)));
     return this.filterDay === this.mountDate(new Date(start_date));
   }
 
@@ -113,7 +133,6 @@ export class SchedulePage {
   }
 
   updateSchedule() {
-    // Close any open sliding items when the schedule updates
     this.scheduleList && this.scheduleList.closeSlidingItems();
 
     this.confData.getTimeline(this.dayIndex, this.queryText, this.excludeTracks, this.segment).subscribe((data: any) => {
@@ -123,7 +142,7 @@ export class SchedulePage {
   }
 
   presentFilter() {
-    let modal = this.modalCtrl.create(ScheduleFilterPage, this.excludeTracks);
+    let modal = this.modalCtrl.create(ScheduleFilterPage, {areas: this.areas});
     modal.present();
 
     modal.onWillDismiss((data: any[]) => {
@@ -135,34 +154,25 @@ export class SchedulePage {
   }
 
   goToSessionDetail(sessionData: any) {
-    // go to the session detail page
-    // and pass in the session data
-
     this.navCtrl.push(SessionDetailPage, { sessionId: sessionData.id, name: sessionData.name });
   }
 
   addFavorite(slidingItem: ItemSliding, sessionData: any) {
 
     if (this.user.hasFavorite(sessionData.name)) {
-      // woops, they already favorited it! What shall we do!?
-      // prompt them to remove it
       this.removeFavorite(slidingItem, sessionData, 'Favorite already added');
     } else {
-      // remember this session as a user favorite
       this.user.addFavorite(sessionData.name);
 
-      // create an alert instance
       let alert = this.alertCtrl.create({
         title: 'Favorite Added',
         buttons: [{
           text: 'OK',
           handler: () => {
-            // close the sliding item
             slidingItem.close();
           }
         }]
       });
-      // now present the alert on top of all other content
       alert.present();
     }
   }
@@ -175,25 +185,19 @@ export class SchedulePage {
         {
           text: 'Cancel',
           handler: () => {
-            // they clicked the cancel button, do not remove the session
-            // close the sliding item and hide the option buttons
             slidingItem.close();
           }
         },
         {
           text: 'Remove',
           handler: () => {
-            // they want to remove this session from their favorites
             this.user.removeFavorite(sessionData.name);
             this.updateSchedule();
-
-            // close the sliding item and hide the option buttons
             slidingItem.close();
           }
         }
       ]
     });
-    // now present the alert on top of all other content
     alert.present();
   }
 
@@ -259,6 +263,18 @@ export class SchedulePage {
     } else {
       return checkDate;
     }
+  }
+
+  groupHasNoSession(group): boolean {
+    if (!group || !group.session) {
+      return true;
+    } 
+    for (let session of group.session) {
+      if (this.canShowSession(session)) {
+        return false;
+      }
+    }
+    return true;
   }
 
 }

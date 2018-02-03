@@ -15,6 +15,7 @@ page-session-detail {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-right: 10px;
     .month {
       color: map-get($colors, redCampus);
     }

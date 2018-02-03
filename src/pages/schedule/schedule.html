@@ -22,14 +22,14 @@
 
   <ion-toolbar no-border-top>
     <ion-searchbar color="primary"
-                   [(ngModel)]="queryText"
-                   (ionInput)="updateSchedule()"
-                   placeholder="Search">
+      [(ngModel)]="queryText"
+      (ionInput)="updateSchedule()"
+      placeholder="Search">
     </ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="outer-content">
   <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
@@ -41,31 +41,26 @@
   </ion-segment>
 
   <ion-list #scheduleList *ngIf="loaded && schedule.length">
-
     <ng-container *ngFor="let group of schedule">
       <ion-item-group *ngIf="canShowGroup(group)">
-
         <ion-item-divider sticky>
           <ion-label>
             {{ group.time | date:'HH:mm'}}
           </ion-label>
         </ion-item-divider>
-
         <ng-container *ngFor="let session of group.session">
-          <ion-item  *ngIf="canShowSession(session)">
-
-            <button ion-item (click)="goToSessionDetail(session)">
-              <h3 text-wrap>{{ session.title }}</h3>
-              <p>
-                {{ session.start_date | date:'HH:mm' }} &mdash;
-                {{ session.end_date | date:'HH:mm' }}
-                {{ session.location  }}
-              </p>
-            </button>
-            <ion-icon [name]="session.isFavorite ? 'star' : 'star-outline'" item-right [color]="session.isFavorite ? 'yellowCampus' : 'dark'" (click)="setFavorite(session)"></ion-icon>
-          </ion-item>
+          <button ion-item *ngIf="canShowSession(session)" (click)="goToSessionDetail(session)" [ngStyle]="{'border-left': '3px solid ' + areas[session?.interest_areas[0].name].color || '#000' }">
+            <h3 text-wrap>{{ session.title }}</h3>
+              {{ session.start_date | date:'HH:mm' }} &mdash;
+              {{ session.end_date | date:'HH:mm' }}
+              {{ session.location  }}
+              <ion-icon [name]="session.isFavorite ? 'star' : 'star-outline'" item-right [color]="session.isFavorite ? 'yellowCampus' : 'dark'" (click)="setFavorite(session)"></ion-icon>
+          </button>
         </ng-container>
-
+        <ng-container *ngIf="showOnlyFavorites"></ng-container>
+        <ion-item *ngIf="groupHasNoSession(group)">
+          <h2>Não há palestras favoritas nesta sessão </h2>
+        </ion-item>
       </ion-item-group>
     </ng-container>
 

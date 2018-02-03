@@ -76,3 +76,26 @@
 }
 
 @import "../assets/animate/animate";
+
+.content-md.outer-content {
+  background: #efeff4;
+}
+
+.list-header-md {
+  padding-left: 16px;
+  padding-left: 16px;
+  position: relative;
+  border-bottom: none;
+  margin-bottom: 0;
+  border-top: 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  color: #333;
+  background: transparent;
+}
+
+.segment-ios {
+  margin-bottom: 1px;
+}

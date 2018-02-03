@@ -7,7 +7,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="outer-content">
   <ion-item-divider color="pinkCampus" text-wrap>
     See the highlights that will happen in the next 2 hours.
   </ion-item-divider>
@@ -21,7 +21,7 @@
     </ion-segment-button>
   </ion-segment>
 
-  <div [hidden]="selectedTab !== 'speakers'" padding>
+  <ion-list [hidden]="selectedTab !== 'speakers'" no-margin>
     <ion-item>
       <ion-thumbnail item-start>
         <img src="assets/img/speakers/default-speaker.png" alt="">
@@ -55,9 +55,9 @@
         <ion-badge color="primary">2.2k</ion-badge>
       </div>
     </ion-item>
-  </div>
+  </ion-list>
 
-  <div [hidden]="selectedTab !== 'activites'" padding>
+  <ion-list [hidden]="selectedTab !== 'activites'" no-margin>
     <ion-item>
       <h2>Vídeo: Gravando com produtividade #CPBR11</h2>
       <p text-wrap>10:30 AM - 11:30 AM - Main stage</p>
@@ -82,5 +82,5 @@
         <ion-badge color="primary">3.5k</ion-badge>
       </div>
     </ion-item>
-  </div>
+  </ion-list>
 </ion-content>

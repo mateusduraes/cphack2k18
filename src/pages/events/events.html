@@ -9,21 +9,20 @@
 </ion-header>
 
 
-<ion-content class="card-background-page">
-  <img src="assets/img/campus1.jpeg" alt="">
+<ion-content class="outer-content">
   <ng-container *ngIf="events && loaded">
-
-    <ion-card tappable *ngFor="let event of events?.results" (click)="selectEvent(event)" tappable class="{{ event.slug }}">
-      <img [src]="'assets/img/' + event.slug + '.jpg'" alt="">
-      <div class="card-title">
-        <img src="assets/img/logo-white.svg" alt="">
-      </div>
-      <div class="card-subtitle">
-        <p>{{ event.title }}</p>
-        <p>{{ event.start_date | date }}</p>
-      </div>
-    </ion-card>
-
+    <ion-list no-margin>
+      <ion-card tappable *ngFor="let event of events?.results" (click)="selectEvent(event)" tappable class="{{ event.slug }}">
+        <img [src]="'assets/img/' + event.slug + '.jpg'" alt="">
+        <div class="card-title">
+          <img src="assets/img/logo-white.svg" alt="">
+        </div>
+        <div class="card-subtitle">
+          <p>{{ event.title }}</p>
+          <p>{{ event.start_date | date }}</p>
+        </div>
+      </ion-card>
+    </ion-list>
   </ng-container>
   <loader message="Searching events..." *ngIf="!loaded"></loader>
 </ion-content>
