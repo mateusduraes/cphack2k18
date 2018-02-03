@@ -1,6 +1,6 @@
 <ion-header no-border>
   <ion-navbar>
-    <ion-title>Activity detail</ion-title>
+    <ion-title>{{ isAttraction ? 'Attraction Detail' : 'Activity detail'}}</ion-title>
     <ion-buttons end>
       <button ion-button icon-only>
         <ion-icon name="share"></ion-icon>
@@ -17,7 +17,7 @@
     <div class="buttons">
       <button ion-button outline color="light" icon-start (click)="checkin()">
         <ion-icon [name]="checked ? 'checkbox-outline' : 'square-outline'"></ion-icon>
-        Checkin
+        {{ isAttraction ? 'Like' : 'Checkin'}}
       </button>
 
       <button ion-button outline color="light" icon-start (click)="invite()">
@@ -37,7 +37,7 @@
 
         <div ion-col col-8>
           <h3>Saturday at 02:00 PM</h3>
-          <p>In 20 minutes - <b>main stage</b></p>
+          <p>In 20 minutes - <b *ngIf="!isAttraction">main stage</b> <b *ngIf="isAttraction">table B20 - B23</b></p>
         </div>
       </ion-row>
     </ion-item>

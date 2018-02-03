@@ -13,6 +13,7 @@ export class SessionDetailPage {
   selectedTab: string = 'about';
   checked: boolean;
   favorited: boolean;
+  isAttraction: boolean;
   constructor(
     public dataProvider: ConferenceData,
     public navParams: NavParams,
@@ -31,5 +32,8 @@ export class SessionDetailPage {
     this.navCtrl.push(InvitePage);
   }
 
+  ionViewDidLoad(){
+    this.isAttraction = this.navParams.get('campus');
+  }
 
 }

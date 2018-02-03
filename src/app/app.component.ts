@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { Storage } from '@ionic/storage';
 
+import { CampusAttractionsPage } from './../pages/campus-attractions/campus-attractions';
 import { TicketPage } from './../pages/ticket/ticket';
 import { HowArrivePage } from './../pages/how-arrive/how-arrive';
 import { SocialPage } from './../pages/social/social';
@@ -49,6 +50,7 @@ export class ConferenceApp {
     { title: 'Find someone', name: 'FindPersonPage', component: FindPersonPage, icon: 'pin' },
     { title: 'Tickets', name: 'TicketPage', component: TicketPage, icon: 'pricetag' },
     { title: 'Highlights', name: 'HilightsPage', component: HilightsPage, icon: 'trophy' },
+    { title: 'Campuseros Attractions', name: 'CampusAttractionsPage', component: CampusAttractionsPage, icon: 'megaphone' },
   ];
   loggedInPages: PageInterface[] = [
     { title: 'Account', name: 'AccountPage', component: AccountPage, icon: 'person' },

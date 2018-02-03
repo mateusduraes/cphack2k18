@@ -17,6 +17,7 @@ import { IonicStorageModule } from '@ionic/storage';
 
 import { ConferenceApp } from './app.component';
 
+import { CampusAttractionsPage } from './../pages/campus-attractions/campus-attractions';
 import { SocialPage } from './../pages/social/social';
 import { TicketPage } from '../pages/ticket/ticket';
 import { FindPersonPage } from './../pages/find-person/find-person';
@@ -67,7 +68,8 @@ import { ApiProvider } from '../providers/api/api';
     PersonLocationPage,
     HowArrivePage,
     TicketPage,
-    HilightsPage
+    HilightsPage,
+    CampusAttractionsPage
   ],
   imports: [
     BrowserModule,
@@ -93,6 +95,7 @@ import { ApiProvider } from '../providers/api/api';
         { component: AccountPage, name: 'AccountPage', segment: 'account' },
         { component: SignupPage, name: 'SignupPage', segment: 'signup' },
         { component: HilightsPage, name: 'HilightsPage', segment: 'hilight' },
+        { component: CampusAttractionsPage, name: 'CampusAttractionsPage', segment: 'attractions' },
       ]
     }),
     IonicStorageModule.forRoot()
@@ -119,7 +122,8 @@ import { ApiProvider } from '../providers/api/api';
     PersonLocationPage,
     HowArrivePage,
     TicketPage,
-    HilightsPage
+    HilightsPage,
+    CampusAttractionsPage
   ],
   providers: [
     { provide: ErrorHandler, useClass: IonicErrorHandler },
