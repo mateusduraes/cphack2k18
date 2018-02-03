@@ -19,7 +19,15 @@ import { IonicStorageModule } from '@ionic/storage';
 
 import { ConferenceApp } from './app.component';
 
+import { CampusAttractionsPage } from './../pages/campus-attractions/campus-attractions';
+import { SocialPage } from './../pages/social/social';
+import { TicketPage } from '../pages/ticket/ticket';
+import { FindPersonPage } from './../pages/find-person/find-person';
+import { InvitePage } from './../pages/invite/invite';
+import { HilightsPage } from './../pages/hilights/hilights';
+import { HowArrivePage } from '../pages/how-arrive/how-arrive';
 import { AboutPage } from '../pages/about/about';
+import { PersonLocationPage } from '../pages/person-location/person-location';
 import { PopoverPage } from '../pages/about-popover/about-popover';
 import { AccountPage } from '../pages/account/account';
 import { LoginPage } from '../pages/login/login';
@@ -31,6 +39,7 @@ import { SpeakerDetailPage } from '../pages/speaker-detail/speaker-detail';
 import { SpeakerListPage } from '../pages/speaker-list/speaker-list';
 import { TabsPage } from '../pages/tabs-page/tabs-page';
 import { EventsPage } from '../pages/events/events';
+import { FindPersonDetailPage } from '../pages/find-person-detail/find-person-detail';
 
 import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
@@ -55,6 +64,15 @@ import { AuthProvider } from '../providers/auth/auth';
     SpeakerListPage,
     TabsPage,
     EventsPage,
+    SocialPage,
+    InvitePage,
+    FindPersonPage,
+    FindPersonDetailPage,
+    PersonLocationPage,
+    HowArrivePage,
+    TicketPage,
+    HilightsPage,
+    CampusAttractionsPage
   ],
   imports: [
     BrowserModule,
@@ -68,14 +86,19 @@ import { AuthProvider } from '../providers/auth/auth';
         { component: EventsPage, name: 'EventsPage', segment: 'events' },
         { component: TabsPage, name: 'TabsPage', segment: 'event/:eventSlug' },
         { component: SchedulePage, name: 'Schedule', segment: 'schedule' },
+        { component: FindPersonPage, name: 'FindPersonPage', segment: 'findperson' },
         { component: SessionDetailPage, name: 'SessionDetail', segment: 'sessionDetail/:sessionId' },
         { component: ScheduleFilterPage, name: 'ScheduleFilter', segment: 'scheduleFilter' },
         { component: SpeakerListPage, name: 'SpeakerList', segment: 'speakerList' },
         { component: SpeakerDetailPage, name: 'SpeakerDetail', segment: 'speakerDetail/:speakerId' },
         { component: AboutPage, name: 'About', segment: 'about' },
+        { component: HowArrivePage, name: 'HowArrivePage', segment: 'arrive' },
+        { component: TicketPage, name: 'TicketPage', segment: 'ticket' },
         { component: LoginPage, name: 'LoginPage', segment: 'login' },
         { component: AccountPage, name: 'AccountPage', segment: 'account' },
         { component: SignupPage, name: 'SignupPage', segment: 'signup' },
+        { component: HilightsPage, name: 'HilightsPage', segment: 'hilight' },
+        { component: CampusAttractionsPage, name: 'CampusAttractionsPage', segment: 'attractions' },
       ]
     }),
     IonicStorageModule.forRoot()
@@ -97,6 +120,15 @@ import { AuthProvider } from '../providers/auth/auth';
     SpeakerListPage,
     TabsPage,
     EventsPage,
+    SocialPage,
+    InvitePage,
+    FindPersonPage,
+    FindPersonDetailPage,
+    PersonLocationPage,
+    HowArrivePage,
+    TicketPage,
+    HilightsPage,
+    CampusAttractionsPage
   ],
   providers: [
     { provide: ErrorHandler, useClass: IonicErrorHandler },

@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-navbar no-border-bottom>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-searchbar placeholder="Find attraction here...">
+    </ion-searchbar>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addAtraction()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-item-divider color="pinkCampus">
+    See the campuseros attractions that is happening now.
+  </ion-item-divider>
+  <ion-segment [(ngModel)]="selectedTab" color="primary">
+    <ion-segment-button value="1">
+      31/01
+    </ion-segment-button>
+    <ion-segment-button value="2">
+      01/02
+    </ion-segment-button>
+    <ion-segment-button value="3">
+      02/02
+    </ion-segment-button>
+    <ion-segment-button value="4">
+      03/02
+    </ion-segment-button>
+    <ion-segment-button value="5">
+      04/02
+    </ion-segment-button>
+    <ion-segment-button value="6">
+      05/02
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-item-divider color="light" sticky>
+    08:30 PM
+  </ion-item-divider>
+  <ion-item tappable (click)="goDetail()">
+    <h2>Video: Gravando com produtividade #CPBR11</h2>
+    <p>10:45 PM - 11-45 PM - by Guilherme Valentim</p>
+    <ion-icon name="star-outline" color="dark" item-right></ion-icon>
+  </ion-item>
+  <ion-item tappable (click)="goDetail()">
+    <h2>Video: Gravando com produtividade #CPBR11</h2>
+    <p>10:45 PM - 11-45 PM - by Guilherme Valentim</p>
+    <ion-icon name="star-outline" color="dark" item-right></ion-icon>
+  </ion-item>
+
+  <ion-item-divider color="light" sticky>
+    09:30 PM
+  </ion-item-divider>
+  <ion-item tappable (click)="goDetail()">
+    <h2>Video: Gravando com produtividade #CPBR11</h2>
+    <p>10:45 PM - 11-45 PM - by Guilherme Valentim</p>
+    <ion-icon name="star-outline" color="dark" item-right></ion-icon>
+  </ion-item>
+  <ion-item tappable (click)="goDetail()">
+    <h2>Video: Gravando com produtividade #CPBR11</h2>
+    <p>10:45 PM - 11-45 PM - by Guilherme Valentim</p>
+    <ion-icon name="star-outline" color="dark" item-right></ion-icon>
+  </ion-item>
+
+</ion-content>

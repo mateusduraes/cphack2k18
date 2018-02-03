@@ -1,19 +1,100 @@
-<ion-header>
+<ion-header no-border>
   <ion-navbar>
-    <ion-title *ngIf="session">{{session.name}}</ion-title>
+    <ion-title>{{ isAttraction ? 'Attraction Detail' : 'Activity detail'}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <ion-icon name="share"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <div *ngIf="session">
-    <h1>{{session.name}}</h1>
-    <h4 *ngFor="let speaker of session?.speakers">
-    {{speaker.name}}
-  </h4>
-    <p>
-      {{session.timeStart}} - {{session.timeEnd}}
-    </p>
-    <p>{{session.location}}</p>
-    <p>{{session.description}}</p>
+<ion-content>
+  <div class="detail-header">
+    <div text-center text-wrap>
+      Video: Gravando com produtividade #CPBR11
+    </div>
+    <div class="buttons">
+      <button ion-button outline color="light" icon-start (click)="checkin()">
+        <ion-icon [name]="checked ? 'checkbox-outline' : 'square-outline'"></ion-icon>
+        {{ isAttraction ? 'Like' : 'Checkin'}}
+      </button>
+
+      <button ion-button outline color="light" icon-start (click)="invite()">
+        <ion-icon name="person-add"></ion-icon>
+        Invite campuseros
+      </button>
+    </div>
   </div>
+
+  <div padding>
+    <ion-item>
+      <ion-row>
+        <div class="date" ion-col col-4>
+          <div class="month">JAN</div>
+          <div class="day">01</div>
+        </div>
+
+        <div ion-col col-8>
+          <h3>Saturday at 02:00 PM</h3>
+          <p>In 20 minutes - <b *ngIf="!isAttraction">main stage</b> <b *ngIf="isAttraction">table B20 - B23</b></p>
+        </div>
+      </ion-row>
+    </ion-item>
+  </div>
+  <ion-item-divider color="light">
+    Speakers
+  </ion-item-divider>
+  <ion-item>
+    <ion-avatar item-start>
+      <img src="assets/img/speakers/default-speaker.png">
+    </ion-avatar>
+    <h2>Sérgio Graças</h2>
+    <p>Software engineer</p>
+    <ion-icon [name]="favorited ? 'star' : 'star-outline'" item-right [color]="favorited ? 'yellowCampus' : 'dark'" (click)="favorite()"></ion-icon>
+  </ion-item>
+  <ion-segment [(ngModel)]="selectedTab" color="primary">
+    <ion-segment-button value="about">
+      About
+    </ion-segment-button>
+    <ion-segment-button value="comments">
+      Comments
+    </ion-segment-button>
+  </ion-segment>
+
+  <div [hidden]="selectedTab !== 'about'" padding>
+    <p>Built SOAP web services for Fortune 500 technology retailer to store customer data under guidance of system architect using Apache Axis2 for the core service engine and JPA, Hibernate, and Oracle DB for the persistence layer</p>
+  </div>
+
+  <div [hidden]="selectedTab !== 'comments'">
+    <ion-item>
+      <ion-input id="answerInput" type="text" placeholder="Comment here" #inputAnswer></ion-input>
+      <button ion-button color="primary" only-icon outline item-right class="button-send" >
+        <ion-icon color="primary" name="send"></ion-icon>
+      </button>
+    </ion-item>
+
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="assets/img/speakers/person2.jpg">
+      </ion-avatar>
+      <h2>Guilherme Valentim</h2>
+      <p>Saturdey - 04:59 PM</p>
+      <p text-wrap>A palestra está muito boa. O palestrante sabe o que está falando.</p>
+      <ion-icon name="thumbs-up" item-right color="primary"></ion-icon>
+    </ion-item>
+
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="assets/img/speakers/person1.jpg">
+      </ion-avatar>
+      <h2>Mateus Durães</h2>
+      <p>Saturdey - 05:07 PM</p>
+      <p text-wrap>Sérgio, o que você acha de usar ferramentas para melhorar a gestão e consequentemente a produtividade?</p>
+      <ion-icon name="thumbs-up" item-right color="primary"></ion-icon>
+    </ion-item>
+  </div>
+
+
+
 </ion-content>

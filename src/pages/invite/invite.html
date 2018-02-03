@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-navbar>
+    <ion-searchbar placeholder="Search campusero here"></ion-searchbar>
+    <ion-buttons end>
+      <button ion-button clear (click)="invite()">Invite</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-item>
+    <ion-label>All</ion-label>
+    <ion-checkbox item-right (ionChange)="toggleAll($event)"></ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <img class="user-image" item-left src="assets/img/speakers/person1.jpg" alt="">
+    <ion-label>
+      <h2>Mateus Durães</h2>
+      <p>Frontend developer</p>
+    </ion-label>
+    <ion-checkbox item-right [checked]="markAll"></ion-checkbox>
+  </ion-item>
+
+  <ion-item>
+    <img class="user-image" item-left src="assets/img/speakers/person3.jpg" alt="">
+    <ion-label>
+      <h2>Jany Dias</h2>
+      <p>Q&A</p>
+    </ion-label>
+    <ion-checkbox item-right [checked]="markAll"></ion-checkbox>
+  </ion-item>
+
+  <ion-item>
+    <img class="user-image" item-left src="assets/img/speakers/person2.jpg" alt="">
+    <ion-label>
+      <h2>Jonathan Silva</h2>
+      <p>Backend developer</p>
+    </ion-label>
+    <ion-checkbox item-right [checked]="markAll"></ion-checkbox>
+  </ion-item>
+
+  <ion-item>
+    <img class="user-image" item-left src="assets/img/speakers/person4.jpg" alt="">
+    <ion-label>
+      <h2>Nathalia Machado</h2>
+      <p>Backend developer</p>
+    </ion-label>
+    <ion-checkbox item-right [checked]="markAll"></ion-checkbox>
+  </ion-item>
+
+
+</ion-content>

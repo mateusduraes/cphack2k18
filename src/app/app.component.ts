@@ -1,3 +1,4 @@
+import { HilightsPage } from './../pages/hilights/hilights';
 import { Component, ViewChild } from '@angular/core';
 
 import { Events, MenuController, Nav, Platform } from 'ionic-angular';
@@ -5,10 +6,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { Storage } from '@ionic/storage';
 
-import { AboutPage } from '../pages/about/about';
+import { CampusAttractionsPage } from './../pages/campus-attractions/campus-attractions';
+import { TicketPage } from './../pages/ticket/ticket';
+import { HowArrivePage } from './../pages/how-arrive/how-arrive';
+import { SocialPage } from './../pages/social/social';
+import { FindPersonPage } from '../pages/find-person/find-person';
 import { AccountPage } from '../pages/account/account';
 import { LoginPage } from '../pages/login/login';
-import { SignupPage } from '../pages/signup/signup';
 import { TabsPage } from '../pages/tabs-page/tabs-page';
 import { SchedulePage } from '../pages/schedule/schedule';
 import { SpeakerListPage } from '../pages/speaker-list/speaker-list';
@@ -43,7 +47,10 @@ export class ConferenceApp {
     { title: 'Events', name: 'EventsPage', component: EventsPage, icon: 'ribbon' },
     { title: 'Schedule', name: 'TabsPage', component: TabsPage, tabComponent: SchedulePage, index: 0, icon: 'calendar' },
     { title: 'Speakers', name: 'TabsPage', component: TabsPage, tabComponent: SpeakerListPage, index: 1, icon: 'contacts' },
-    { title: 'About', name: 'TabsPage', component: TabsPage, tabComponent: AboutPage, index: 3, icon: 'information-circle' }
+    { title: 'Find someone', name: 'FindPersonPage', component: FindPersonPage, icon: 'pin' },
+    { title: 'Tickets', name: 'TicketPage', component: TicketPage, icon: 'pricetag' },
+    { title: 'Highlights', name: 'HilightsPage', component: HilightsPage, icon: 'trophy' },
+    { title: 'Campuseros Attractions', name: 'CampusAttractionsPage', component: CampusAttractionsPage, icon: 'megaphone' },
   ];
   loggedInPages: PageInterface[] = [
     { title: 'Account', name: 'AccountPage', component: AccountPage, icon: 'person' },
@@ -51,7 +58,6 @@ export class ConferenceApp {
   ];
   loggedOutPages: PageInterface[] = [
     { title: 'Login', name: 'LoginPage', component: LoginPage, icon: 'log-in' },
-    { title: 'Signup', name: 'SignupPage', component: SignupPage, icon: 'person-add' }
   ];
   rootPage: any = EventsPage;
 
@@ -77,6 +83,10 @@ export class ConferenceApp {
     this.platformReady();
   }
 
+  findSomeone() {
+
+  }
+
   openPage(page: PageInterface) {
     let params = {};
 
@@ -90,10 +100,10 @@ export class ConferenceApp {
     // If we are already on tabs just change the selected tab
     // don't setRoot again, this maintains the history stack of the
     // tabs even if changing them from the menu
+    console.log('pageName', page);
     if (this.nav.getActiveChildNavs().length && page.index != undefined) {
       this.nav.getActiveChildNavs()[0].select(page.index);
     } else {
-      // Set the root of the nav with params if it's a tab index
       this.nav.setRoot(page.name, params).catch((err: any) => {
         console.log(`Didn't set nav root: ${err}`);
       });
@@ -104,6 +114,8 @@ export class ConferenceApp {
       this.userData.logout();
     }
   }
+
+
 
   listenToLoginEvents() {
     this.events.subscribe('user:login', () => {
@@ -147,5 +159,13 @@ export class ConferenceApp {
       return 'primary';
     }
     return;
+  }
+
+  openSocial() {
+    this.nav.push(SocialPage);
+  }
+
+  howArrive() {
+    this.nav.push(HowArrivePage);
   }
 }

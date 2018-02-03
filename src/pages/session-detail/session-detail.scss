@@ -1,0 +1,22 @@
+page-session-detail {
+  .detail-header {
+    background-color: map-get($colors, blueCampus);
+    color: #fff;
+    .buttons {
+      display: flex;
+      justify-content: center;
+      padding-bottom: 10px;
+      padding-top: 20px;
+    }
+  }
+
+  .date {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .month {
+      color: map-get($colors, redCampus);
+    }
+  }
+}
