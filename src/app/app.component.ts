@@ -1,3 +1,4 @@
+import { NotificationsPage } from './../pages/notifications/notifications';
 import { AuthProvider } from './../providers/auth/auth';
 import { CPOauth } from './../models/cpbr-oauth';
 import { Oauth } from 'ng2-cordova-oauth/oauth';
@@ -102,6 +103,10 @@ export class ConferenceApp {
     }).catch((err) => {
       console.log(err);
     });
+  }
+
+  notifications() {
+    this.nav.setRoot(NotificationsPage);
   }
 
   openPage(page: PageInterface) {

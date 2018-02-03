@@ -1,3 +1,4 @@
+import { NotificationsPage } from './../pages/notifications/notifications';
 import { ComponentsModule } from './../components/components.module';
 import { DirectivesModule } from './../directives/directives.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -72,7 +73,8 @@ import { AuthProvider } from '../providers/auth/auth';
     HowArrivePage,
     TicketPage,
     HilightsPage,
-    CampusAttractionsPage
+    CampusAttractionsPage,
+    NotificationsPage
   ],
   imports: [
     BrowserModule,
@@ -99,6 +101,7 @@ import { AuthProvider } from '../providers/auth/auth';
         { component: SignupPage, name: 'SignupPage', segment: 'signup' },
         { component: HilightsPage, name: 'HilightsPage', segment: 'hilight' },
         { component: CampusAttractionsPage, name: 'CampusAttractionsPage', segment: 'attractions' },
+        { component: NotificationsPage, name: 'NotificationsPage', segment: 'notifications' },
       ]
     }),
     IonicStorageModule.forRoot()
@@ -128,7 +131,8 @@ import { AuthProvider } from '../providers/auth/auth';
     HowArrivePage,
     TicketPage,
     HilightsPage,
-    CampusAttractionsPage
+    CampusAttractionsPage,
+    NotificationsPage
   ],
   providers: [
     { provide: ErrorHandler, useClass: IonicErrorHandler },

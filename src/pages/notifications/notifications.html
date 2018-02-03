@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-navbar no-border-bottom>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <ion-title>Settings</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="outer-content">
+  <ion-list no-border>
+    <ion-list-header>
+      Notifications
+    </ion-list-header>
+    <ion-item>
+      <ion-toggle checked="true"></ion-toggle>
+      <ion-label>
+        Favorites
+      </ion-label>
+      <ion-icon name='star' item-start></ion-icon>
+    </ion-item>
+    <ion-item>
+      <ion-toggle checked="false"></ion-toggle>
+      <ion-label>
+        Invitations
+      </ion-label>
+      <ion-icon name='information' item-start></ion-icon>
+    </ion-item>
+  </ion-list>
+  <ion-list no-border>
+      <ion-list-header>
+        Permissions
+      </ion-list-header>
+      <ion-item>
+        <ion-toggle checked="false"></ion-toggle>
+        <ion-label>
+          Show my location
+        </ion-label>
+        <ion-icon name='pin' item-start></ion-icon>
+      </ion-item>
+      <ion-item>
+        <ion-toggle checked="true"></ion-toggle>
+        <ion-label>
+          Receive messages
+        </ion-label>
+        <ion-icon name='chatbubbles' item-start></ion-icon>
+      </ion-item>
+    </ion-list>
+</ion-content>
+
