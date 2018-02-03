@@ -201,8 +201,10 @@ export class SchedulePage {
     alert.present();
   }
 
-  public setFavorite(scheduleItem): void {
+  public setFavorite(scheduleItem, event: MouseEvent): void {
     scheduleItem.isFavorite = !scheduleItem.isFavorite;
+    event.stopPropagation();
+    event.preventDefault();
   }
 
   public toggleToFavorites(): void {
