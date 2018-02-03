@@ -1,0 +1,13 @@
+page-person-location {
+
+  .map-container {
+    position: relative;
+    .pin {
+      position: absolute;
+      top: calc(45% - 90px);
+      left: 40%;
+      font-size: 120px;
+    }
+  }
+
+}

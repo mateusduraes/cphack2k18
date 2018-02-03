@@ -1,5 +1,6 @@
+import { InvitePage } from './../invite/invite';
 import { Component } from '@angular/core';
-import { NavParams } from 'ionic-angular';
+import { NavParams, NavController } from 'ionic-angular';
 
 import { ConferenceData } from '../../providers/conference-data';
 
@@ -14,7 +15,8 @@ export class SessionDetailPage {
   favorited: boolean;
   constructor(
     public dataProvider: ConferenceData,
-    public navParams: NavParams
+    public navParams: NavParams,
+    public navCtrl: NavController
   ) {}
 
   public checkin(): void {
@@ -25,6 +27,9 @@ export class SessionDetailPage {
     this.favorited = !this.favorited;
   }
 
+  public invite(): void {
+    this.navCtrl.push(InvitePage);
+  }
 
 
 }

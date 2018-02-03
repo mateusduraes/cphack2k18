@@ -1,23 +1,39 @@
-<ion-header>
+<ion-header no-border>
   <ion-navbar>
     <ion-title>{{speaker?.first_name}} {{speaker?.last_name}}</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class="speaker-detail">
-  <div text-center *ngIf="speaker">
+<ion-content>
+  <div text-center *ngIf="speaker" class="speaker-info">
     <img [src]="speaker.photo_url" [alt]="speaker.first_name"><br>
-
-    <button ion-button icon-only clear small color="twitter">
+    <p>Facebook Software Engineer</p>
+    <button ion-button icon-only clear small color="light">
       <ion-icon name="logo-twitter"></ion-icon>
     </button>
-    <button ion-button icon-only clear small color="github">
+    <button ion-button icon-only clear small color="light">
       <ion-icon name="logo-github"></ion-icon>
     </button>
-    <button ion-button icon-only clear small color="instagram">
+    <button ion-button icon-only clear small color="light">
       <ion-icon name="logo-instagram"></ion-icon>
     </button>
   </div>
 
-  <p [innerHTML]="speaker?.bio"></p>
+  <ion-item-divider color="light">Description</ion-item-divider>
+  <p padding>
+      Successfully established and built software engineering and development company providing
+      solutions to a variety of companies’ business and operational needs. Led complex software
+      development for a broad range of functions including invoice management systems, e-
+      commerce, and sales systems.
+  </p>
+
+  <ion-item-divider color="light">Sessions</ion-item-divider>
+  <ion-item>
+    <h2>Hacking life</h2>
+    <p>08:30 PM - 09:PM - Main stage</p>
+  </ion-item>
+  <ion-item>
+    <h2>Hacking life</h2>
+    <p>08:30 PM - 09:PM - Main stage</p>
+  </ion-item>
 </ion-content>

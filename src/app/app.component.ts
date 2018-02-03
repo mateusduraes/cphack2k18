@@ -6,7 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { Storage } from '@ionic/storage';
 
-import { AboutPage } from '../pages/about/about';
+import { FindPersonPage } from '../pages/find-person/find-person';
 import { AccountPage } from '../pages/account/account';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
@@ -42,9 +42,9 @@ export class ConferenceApp {
   // the login page disables the left menu
   appPages: PageInterface[] = [
     { title: 'Events', name: 'EventsPage', component: EventsPage, icon: 'ribbon' },
+    { title: 'Find someone', name: 'FindPersonPage', component: FindPersonPage, icon: 'pin' },
     { title: 'Schedule', name: 'TabsPage', component: TabsPage, tabComponent: SchedulePage, index: 0, icon: 'calendar' },
     { title: 'Speakers', name: 'TabsPage', component: TabsPage, tabComponent: SpeakerListPage, index: 1, icon: 'contacts' },
-    { title: 'About', name: 'TabsPage', component: TabsPage, tabComponent: AboutPage, index: 3, icon: 'information-circle' }
   ];
   loggedInPages: PageInterface[] = [
     { title: 'Account', name: 'AccountPage', component: AccountPage, icon: 'person' },
@@ -77,6 +77,10 @@ export class ConferenceApp {
     this.listenToLoginEvents();
   }
 
+  findSomeone() {
+
+  }
+
   openPage(page: PageInterface) {
     let params = {};
 
@@ -90,10 +94,10 @@ export class ConferenceApp {
     // If we are already on tabs just change the selected tab
     // don't setRoot again, this maintains the history stack of the
     // tabs even if changing them from the menu
+    console.log('pageName', page);
     if (this.nav.getActiveChildNavs().length && page.index != undefined) {
       this.nav.getActiveChildNavs()[0].select(page.index);
     } else {
-      // Set the root of the nav with params if it's a tab index
       this.nav.setRoot(page.name, params).catch((err: any) => {
         console.log(`Didn't set nav root: ${err}`);
       });

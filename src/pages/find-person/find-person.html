@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-navbar no-border-bottom>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <ion-searchbar placeholder="Search the name here..."></ion-searchbar>
+
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item (click)="findPerson()">
+    <ion-thumbnail item-start>
+      <img src="assets/img/speakers/person1.jpg" alt="">
+    </ion-thumbnail>
+    <h2>Mateus Durães</h2>
+    <p>Frontend developer</p>
+  </ion-item>
+
+  <ion-item (click)="findPerson()">
+    <ion-thumbnail item-start>
+      <img src="assets/img/speakers/person3.jpg" alt="">
+    </ion-thumbnail>
+    <h2>Jany Dias</h2>
+    <p>Q&A</p>
+  </ion-item>
+
+  <ion-item (click)="findPerson()">
+    <ion-thumbnail item-start>
+      <img src="assets/img/speakers/person2.jpg" alt="">
+    </ion-thumbnail>
+    <h2>Jonathan Silva</h2>
+    <p>Backend developer</p>
+  </ion-item>
+
+  <ion-item (click)="findPerson()">
+    <ion-thumbnail item-start>
+      <img src="assets/img/speakers/person4.jpg" alt="">
+    </ion-thumbnail>
+    <h2>Nathalia Machado</h2>
+    <p>Backend developer</p>
+  </ion-item>
+</ion-content>

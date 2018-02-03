@@ -1,3 +1,5 @@
+import { InvitePage } from './../pages/invite/invite';
+import { FindPersonPage } from './../pages/find-person/find-person';
 import { SocialPage } from './../pages/social/social';
 import { ComponentsModule } from './../components/components.module';
 import { DirectivesModule } from './../directives/directives.module';
@@ -19,6 +21,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { ConferenceApp } from './app.component';
 
 import { AboutPage } from '../pages/about/about';
+import { PersonLocationPage } from '../pages/person-location/person-location';
 import { PopoverPage } from '../pages/about-popover/about-popover';
 import { AccountPage } from '../pages/account/account';
 import { LoginPage } from '../pages/login/login';
@@ -30,6 +33,7 @@ import { SpeakerDetailPage } from '../pages/speaker-detail/speaker-detail';
 import { SpeakerListPage } from '../pages/speaker-list/speaker-list';
 import { TabsPage } from '../pages/tabs-page/tabs-page';
 import { EventsPage } from '../pages/events/events';
+import { FindPersonDetailPage } from '../pages/find-person-detail/find-person-detail';
 
 import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
@@ -53,7 +57,11 @@ import { ApiProvider } from '../providers/api/api';
     SpeakerListPage,
     TabsPage,
     EventsPage,
-    SocialPage
+    SocialPage,
+    InvitePage,
+    FindPersonPage,
+    FindPersonDetailPage,
+    PersonLocationPage
   ],
   imports: [
     BrowserModule,
@@ -67,6 +75,7 @@ import { ApiProvider } from '../providers/api/api';
         { component: EventsPage, name: 'EventsPage', segment: 'events' },
         { component: TabsPage, name: 'TabsPage', segment: 'event/:eventSlug' },
         { component: SchedulePage, name: 'Schedule', segment: 'schedule' },
+        { component: FindPersonPage, name: 'FindPersonPage', segment: 'findperson' },
         { component: SessionDetailPage, name: 'SessionDetail', segment: 'sessionDetail/:sessionId' },
         { component: ScheduleFilterPage, name: 'ScheduleFilter', segment: 'scheduleFilter' },
         { component: SpeakerListPage, name: 'SpeakerList', segment: 'speakerList' },
@@ -94,7 +103,11 @@ import { ApiProvider } from '../providers/api/api';
     SpeakerListPage,
     TabsPage,
     EventsPage,
-    SocialPage
+    SocialPage,
+    InvitePage,
+    FindPersonPage,
+    FindPersonDetailPage,
+    PersonLocationPage
   ],
   providers: [
     { provide: ErrorHandler, useClass: IonicErrorHandler },
