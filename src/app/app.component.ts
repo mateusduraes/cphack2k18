@@ -95,8 +95,8 @@ export class ConferenceApp {
 
   login () {
     const provider = new CPOauth({});
-
     this.oauth.logInVia(provider).then((success: any) => {
+      this.userData.login('Luis Moreno');
       this.auth.getAccessToken(success.code).then((access_token) => {
         console.log(access_token);
       });
@@ -136,8 +136,6 @@ export class ConferenceApp {
       this.userData.logout();
     }
   }
-
-
 
   listenToLoginEvents() {
     this.events.subscribe('user:login', () => {
