@@ -74,6 +74,7 @@ export class ConferenceApp {
     this.enableMenu(true);
 
     this.listenToLoginEvents();
+    this.platformReady();
   }
 
   openPage(page: PageInterface) {
@@ -126,6 +127,7 @@ export class ConferenceApp {
   platformReady() {
     // Call any initial plugins when ready
     this.platform.ready().then(() => {
+      console.log('platformready');
       this.splashScreen.hide();
     });
   }

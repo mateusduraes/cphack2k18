@@ -1,3 +1,6 @@
+import { AuthProvider } from './../../providers/auth/auth';
+import { CPOauth } from './../../models/cpbr-oauth';
+import { Oauth } from 'ng2-cordova-oauth/oauth';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
@@ -14,14 +17,31 @@ import { SignupPage } from '../signup/signup';
   templateUrl: 'login.html'
 })
 export class LoginPage {
-  login: UserOptions = { username: '', password: '' };
+  credentials: UserOptions = { username: '', password: '' };
   submitted = false;
 
-  constructor(public navCtrl: NavController, public userData: UserData) { }
+  constructor(
+    public navCtrl: NavController,
+    public userData: UserData,
+    public oauth: Oauth,
+    public auth: AuthProvider,
+  ) { }
 
   onLogin() {
     // this.userData.login(this.login.username);
     this.navCtrl.push(TabsPage);
+  }
+
+  login() {
+    const provider = new CPOauth({});
+    
+    this.oauth.logInVia(provider).then((success: any) => {
+      this.auth.getAccessToken(success.code).then((access_token) => {
+        console.log(access_token);
+      });
+    }).catch((err) => {
+      console.log(err);
+    });
   }
 
   onSignup() {

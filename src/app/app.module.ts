@@ -3,6 +3,8 @@ import { DirectivesModule } from './../directives/directives.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { NgModule, ErrorHandler } from '@angular/core';
+import { OauthCordova } from 'ng2-cordova-oauth/platform/cordova';
+import { Oauth } from 'ng2-cordova-oauth/oauth';
 
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 
@@ -35,6 +37,7 @@ import { UserData } from '../providers/user-data';
 import { OfServiceProvider } from '../providers/of-service/of-service';
 import { OfStorage } from '../providers/of-service/of-storage';
 import { ApiProvider } from '../providers/api/api';
+import { AuthProvider } from '../providers/auth/auth';
 
 
 @NgModule({
@@ -77,7 +80,9 @@ import { ApiProvider } from '../providers/api/api';
     }),
     IonicStorageModule.forRoot()
   ],
-  bootstrap: [IonicApp],
+  bootstrap: [
+    IonicApp,
+  ],
   entryComponents: [
     ConferenceApp,
     AboutPage,
@@ -95,6 +100,7 @@ import { ApiProvider } from '../providers/api/api';
   ],
   providers: [
     { provide: ErrorHandler, useClass: IonicErrorHandler },
+    { provide: Oauth, useClass: OauthCordova },
     ConferenceData,
     UserData,
     InAppBrowser,
@@ -103,6 +109,7 @@ import { ApiProvider } from '../providers/api/api';
     OfServiceProvider,
     OfStorage,
     ApiProvider,
+    AuthProvider,
   ]
 })
 export class AppModule { }
