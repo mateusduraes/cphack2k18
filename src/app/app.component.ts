@@ -1,3 +1,6 @@
+import { AuthProvider } from './../providers/auth/auth';
+import { CPOauth } from './../models/cpbr-oauth';
+import { Oauth } from 'ng2-cordova-oauth/oauth';
 import { HilightsPage } from './../pages/hilights/hilights';
 import { Component, ViewChild } from '@angular/core';
 
@@ -68,7 +71,9 @@ export class ConferenceApp {
     public platform: Platform,
     public confData: ConferenceData,
     public storage: Storage,
-    public splashScreen: SplashScreen
+    public splashScreen: SplashScreen,
+    public oauth: Oauth,
+    public auth: AuthProvider,
   ) {
     // load the conference data
     confData.load();
@@ -85,6 +90,18 @@ export class ConferenceApp {
 
   findSomeone() {
 
+  }
+
+  login () {
+    const provider = new CPOauth({});
+
+    this.oauth.logInVia(provider).then((success: any) => {
+      this.auth.getAccessToken(success.code).then((access_token) => {
+        console.log(access_token);
+      });
+    }).catch((err) => {
+      console.log(err);
+    });
   }
 
   openPage(page: PageInterface) {
